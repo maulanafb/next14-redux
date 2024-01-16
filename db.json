@@ -1,0 +1,39 @@
+{
+  "product": [
+    {
+      "id": "1",
+      "title": "Product 1",
+      "price": 199
+    },
+    {
+      "id": "2",
+      "title": "Product 2",
+      "price": 200
+    },
+    {
+      "id": "3",
+      "title": "Product 3",
+      "price": 300
+    },
+    {
+      "id": "4",
+      "title": "Product 4",
+      "price": 400
+    },
+    {
+      "id": "5",
+      "title": "Product 5",
+      "price": 500
+    },
+    {
+      "id": "f462",
+      "title": "produk baru",
+      "price": 999999
+    },
+    {
+      "id": "89b0",
+      "title": "produk update",
+      "price": 69
+    }
+  ]
+}
