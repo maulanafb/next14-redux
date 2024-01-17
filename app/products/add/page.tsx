@@ -1,26 +1,34 @@
 'use client'
-
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { saveProduct } from '@/app/lib/redux/features/productSlice'; 
+import { useRouter } from 'next/navigation'; 
 
 
-// Define a TypeScript interface for the state
 interface ProductState {
   title: string;
   price: number;
 }
 
 const AddProducts: React.FC = () => {
-  // Use 'useState' to manage state
   const [title, setTitle] = useState<string>('');
   const [price, setPrice] = useState<number>(0);
   const dispatch = useDispatch();
+  const router = useRouter(); // Use the correct import
+interface IProps {
+  title: string;
+  price: number;
+}
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-  };
+  // Use the async thunk directly, it will be handled by useDispatch
+  await dispatch(saveProduct({ title, price }));
+  
+  router.push('/products'); 
+};
 
   return (
     <div>

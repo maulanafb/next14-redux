@@ -19,7 +19,7 @@ const AddProducts: React.FC = () => {
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await dispatch(saveProduct({ title, price })); // Correct action name
+    await dispatch(saveProduct({ title, price })); 
     // router.push('/products'); 
   };
 

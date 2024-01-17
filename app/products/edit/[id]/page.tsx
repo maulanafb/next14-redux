@@ -31,13 +31,22 @@ const AddProducts: React.FC = () => {
     }
   }, [product]);
 
+interface UpdateProductPayload {
+  id: string;
+  title: string;
+  price: number;
+}
+
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Add logic for updating the product
-    await dispatch(updateProduct({ id, title, price }))
-    router.push('/products')
+
+    const payload: UpdateProductPayload = { id, title, price };
+
+    await dispatch(updateProduct(payload));
+    router.push('/products');
   };
+
 
   return (
     <div>

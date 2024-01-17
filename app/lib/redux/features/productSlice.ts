@@ -13,9 +13,14 @@ export const getProducts = createAsyncThunk(
   }
 );
 
+interface IProps {
+  title: string;
+  price: number;
+}
+
 export const saveProduct = createAsyncThunk(
   "products/saveProduct",
-  async ({ title, price }: any) => {
+  async ({ title, price }: IProps) => {
     const response = await axios.post("http://localhost:5000/product", {
       title,
       price,
@@ -26,7 +31,7 @@ export const saveProduct = createAsyncThunk(
 
 export const deleteProduct = createAsyncThunk(
   "products/deleteProduct", // Change the key to make it distinct
-  async (id) => {
+  async (id: string) => {
     await axios.delete(`http://localhost:5000/product/${id}`);
     return id;
   }
@@ -34,7 +39,15 @@ export const deleteProduct = createAsyncThunk(
 
 export const updateProduct = createAsyncThunk(
   "products/updateProduct",
-  async ({ id, title, price }: any) => {
+  async ({
+    id,
+    title,
+    price,
+  }: {
+    id: string;
+    title: string;
+    price: number;
+  }) => {
     const response = await axios.patch(`http://localhost:5000/product/${id}`, {
       id,
       title,
@@ -45,7 +58,8 @@ export const updateProduct = createAsyncThunk(
 );
 
 const productEntity = createEntityAdapter({
-  selectId: (product: any) => product.id,
+  selectId: (product: { title: string; id: string; price: number }) =>
+    product.id,
 });
 
 const productSlice = createSlice({
